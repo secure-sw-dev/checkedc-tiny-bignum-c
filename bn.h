@@ -90,7 +90,7 @@ enum { SMALLER = -1, EQUAL = 0, LARGER = 1 };
 void bignum_init(_Ptr<struct bn> n);
 void bignum_from_int(_Ptr<struct bn> n, DTYPE_TMP i);
 int  bignum_to_int(_Ptr<struct bn> n);
-void bignum_from_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str, int nbytes);
+void bignum_from_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str : count(nbytes), int nbytes);
 void bignum_to_string(_Ptr<struct bn> n, char *str : itype(_Array_ptr<char>) count(maxsize), int maxsize);
 
 /* Basic arithmetic operations: */

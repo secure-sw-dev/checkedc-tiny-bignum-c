@@ -4,6 +4,13 @@
 #include <string.h>
 #include "bn.h"
 
+void bignum_from_string_using_strlen(_Ptr<struct bn> n, _Nt_array_ptr<char> str) {
+  int len = strlen(str);
+  _Nt_array_ptr<char> str2 : count(len) =
+    _Assume_bounds_cast<_Nt_array_ptr<char>>(str, count(len));
+  bignum_from_string(n, str2, len);
+}
+
 enum { ADD, SUB, MUL, DIV, AND, OR, XOR, POW, MOD, RSHFT, LSHFT, ISQRT };
 
 int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
@@ -36,9 +43,9 @@ struct bn res = {};
   bignum_init(&b);
   bignum_init(&c);
   bignum_init(&res);
-  bignum_from_string(&a, argv[2], strlen(argv[2]));
-  bignum_from_string(&b, argv[3], strlen(argv[3]));
-  bignum_from_string(&c, argv[4], strlen(argv[4]));
+  bignum_from_string_using_strlen(&a, argv[2]);
+  bignum_from_string_using_strlen(&b, argv[3]);
+  bignum_from_string_using_strlen(&c, argv[4]);
 
   struct bn a_before = {};
 struct bn b_before = {};
