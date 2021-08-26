@@ -78,8 +78,8 @@ struct bn b_before = {};
 
   if (!cmp_result)
   {
-    char buf _Nt_checked[8192];
-    bignum_to_string(&res, buf, sizeof(buf));
+    char buf _Nt_checked[8193];
+    bignum_to_string(&res, buf, sizeof(buf)-1);
     printf("\ngot %s\n", buf);
     printf(" a  = %d \n", bignum_to_int(&a));
     printf(" b  = %d \n", bignum_to_int(&b));
