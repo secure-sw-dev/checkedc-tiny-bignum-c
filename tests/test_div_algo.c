@@ -40,7 +40,7 @@ static int divide(int dividend, int divisor)
   return answer;
 }
 
-void divide2(unsigned dividend, unsigned divisor, unsigned* quotient, unsigned* remainder)
+void divide2(unsigned dividend, unsigned divisor, _Ptr<unsigned> quotient, _Ptr<unsigned> remainder)
 {
   unsigned t, num_bits;
   unsigned q, bit, d;
@@ -92,7 +92,7 @@ void divide2(unsigned dividend, unsigned divisor, unsigned* quotient, unsigned* 
   }
 }  /* unsigned_divide */
 
-int main()
+int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
   unsigned a,b,q,r;
 

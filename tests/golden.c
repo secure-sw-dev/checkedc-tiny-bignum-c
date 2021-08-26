@@ -10,7 +10,7 @@ struct test
 };
 
 /* Golden tests - input and expected outputs: */
-static struct test oracle[] =
+static struct test oracle _Checked[] =
 {
   {'+', 80, 20, 100 },
   {'+', 18, 22, 40 },
@@ -185,12 +185,16 @@ const int ntests = sizeof(oracle) / sizeof(*oracle);
 
 
 
-int main()
+int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
-  struct bn sa, sb, sc, sd;
+  struct bn sa = {};
+struct bn sb = {};
+struct bn sc = {};
+struct bn sd = {};
+
   uint32_t ia, ib, ic;
   char op;
-  char buf[8192];
+  char buf _Nt_checked[8192];
   int npassed = 0;
   int test_passed;
 

@@ -6,7 +6,7 @@
 
 enum { ADD, SUB, MUL, DIV, AND, OR, XOR, POW, MOD, RSHFT, LSHFT, ISQRT };
 
-int main(int argc, char** argv)
+int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
 
   if (argc < 5)
@@ -26,7 +26,11 @@ int main(int argc, char** argv)
   printf("expected = %s \n", argv[4]);
 */
 
-  struct bn a, b, c, res;
+  struct bn a = {};
+struct bn b = {};
+struct bn c = {};
+struct bn res = {};
+
 
   bignum_init(&a);
   bignum_init(&b);
@@ -36,7 +40,9 @@ int main(int argc, char** argv)
   bignum_from_string(&b, argv[3], strlen(argv[3]));
   bignum_from_string(&c, argv[4], strlen(argv[4]));
 
-  struct bn a_before, b_before;
+  struct bn a_before = {};
+struct bn b_before = {};
+
   bignum_assign(&a_before, &a);
   bignum_assign(&b_before, &b);
 
@@ -72,7 +78,7 @@ int main(int argc, char** argv)
 
   if (!cmp_result)
   {
-    char buf[8192];
+    char buf _Nt_checked[8192];
     bignum_to_string(&res, buf, sizeof(buf));
     printf("\ngot %s\n", buf);
     printf(" a  = %d \n", bignum_to_int(&a));

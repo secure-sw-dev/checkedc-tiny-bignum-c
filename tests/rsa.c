@@ -41,13 +41,13 @@
 #include "bn.h"
 
 /* O(log n) */
-void pow_mod_faster(struct bn* a, struct bn* b, struct bn* n, struct bn* res)
+void pow_mod_faster(_Ptr<struct bn> a, _Ptr<struct bn> b, _Ptr<struct bn> n, _Ptr<struct bn> res)
 {
   bignum_from_int(res, 1); /* r = 1 */
 
-  struct bn tmpa;
-  struct bn tmpb;
-  struct bn tmp;
+  struct bn tmpa = {};
+  struct bn tmpb = {};
+  struct bn tmp = {};
   bignum_assign(&tmpa, a);
   bignum_assign(&tmpb, b);
 
@@ -72,8 +72,13 @@ void pow_mod_faster(struct bn* a, struct bn* b, struct bn* n, struct bn* res)
 static void test_rsa_1(void)
 {
   /* Testing with very small and simple terms */
-  char buf[8192];
-  struct bn M, C, E, D, N;
+  char buf _Nt_checked[8192];
+  struct bn M = {};
+struct bn C = {};
+struct bn E = {};
+struct bn D = {};
+struct bn N = {};
+
 
 
   const int p = 11;
@@ -128,8 +133,13 @@ static void test_rsa_1(void)
 
 void test_rsa_2(void)
 {
-  char buf[8192];
-  struct bn M, C, E, D, N;
+  char buf _Nt_checked[8192];
+  struct bn M = {};
+struct bn C = {};
+struct bn E = {};
+struct bn D = {};
+struct bn N = {};
+
 
 
   const int p = 61;
@@ -181,8 +191,13 @@ void test_rsa_2(void)
 
 void test_rsa_3(void)
 {
-  char buf[8192];
-  struct bn M, C, E, D, N;
+  char buf _Nt_checked[8192];
+  struct bn M = {};
+struct bn C = {};
+struct bn E = {};
+struct bn D = {};
+struct bn N = {};
+
 
 
   const int p = 2053;
@@ -236,15 +251,15 @@ void test_rsa_3(void)
 
 static void test_rsa1024(void)
 {
-  char public[]  = "a15f36fc7f8d188057fc51751962a5977118fa2ad4ced249c039ce36c8d1bd275273f1edd821892fa75680b1ae38749fff9268bf06b3c2af02bbdb52a0d05c2ae2384aa1002391c4b16b87caea8296cfd43757bb51373412e8fe5df2e56370505b692cf8d966e3f16bc62629874a0464a9710e4a0718637a68442e0eb1648ec5";
-  char private[] = "3f5cc8956a6bf773e598604faf71097e265d5d55560c038c0bdb66ba222e20ac80f69fc6f93769cb795440e2037b8d67898d6e6d9b6f180169fc6348d5761ac9e81f6b8879529bc07c28dc92609eb8a4d15ac4ba3168a331403c689b1e82f62518c38601d58fd628fcb7009f139fb98e61ef7a23bee4e3d50af709638c24133d";
-  char buf[8192];
+  char public _Nt_checked[] = "a15f36fc7f8d188057fc51751962a5977118fa2ad4ced249c039ce36c8d1bd275273f1edd821892fa75680b1ae38749fff9268bf06b3c2af02bbdb52a0d05c2ae2384aa1002391c4b16b87caea8296cfd43757bb51373412e8fe5df2e56370505b692cf8d966e3f16bc62629874a0464a9710e4a0718637a68442e0eb1648ec5";
+  char private _Nt_checked[] = "3f5cc8956a6bf773e598604faf71097e265d5d55560c038c0bdb66ba222e20ac80f69fc6f93769cb795440e2037b8d67898d6e6d9b6f180169fc6348d5761ac9e81f6b8879529bc07c28dc92609eb8a4d15ac4ba3168a331403c689b1e82f62518c38601d58fd628fcb7009f139fb98e61ef7a23bee4e3d50af709638c24133d";
+  char buf _Nt_checked[8192];
 
-  struct bn n; /* public  key */
-  struct bn d; /* private key */
-  struct bn e; /* public exponent */
-  struct bn m; /* clear text message */
-  struct bn c; /* cipher text */
+  struct bn n = {}; /* public  key */
+  struct bn d = {}; /* private key */
+  struct bn e = {}; /* public exponent */
+  struct bn m = {}; /* clear text message */
+  struct bn c = {}; /* cipher text */
 
   //int len_pub = strlen(public);
   //int len_prv = strlen(private);
@@ -295,7 +310,7 @@ static void test_rsa1024(void)
 }
 
 
-int main()
+int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
   printf("\n");
   printf("Testing RSA encryption implemented with bignum. \n");

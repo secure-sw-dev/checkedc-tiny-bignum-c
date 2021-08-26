@@ -13,19 +13,28 @@
 
 
 
-int main()
+int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
-  char sabuf[8192];
-  char sbbuf[8192];
-  char scbuf[8192];
-  char sdbuf[8192];
-  char iabuf[8192];
-  char ibbuf[8192];
-  char icbuf[8192];
-  char idbuf[8192];
+  char sabuf _Nt_checked[8192];
+  char sbbuf _Nt_checked[8192];
+  char scbuf _Nt_checked[8192];
+  char sdbuf _Nt_checked[8192];
+  char iabuf _Nt_checked[8192];
+  char ibbuf _Nt_checked[8192];
+  char icbuf _Nt_checked[8192];
+  char idbuf _Nt_checked[8192];
 
-  struct bn sa, sb, sc, sd, se;
-  struct bn ia, ib, ic, id;
+  struct bn sa = {};
+struct bn sb = {};
+struct bn sc = {};
+struct bn sd = {};
+struct bn se = {};
+
+  struct bn ia = {};
+struct bn ib = {};
+struct bn ic = {};
+struct bn id = {};
+
 
   bignum_init(&sa);
   bignum_init(&sb);
@@ -112,8 +121,8 @@ int main()
   bignum_init(&sc);
   bignum_init(&sd);
 
-  char hex_1000[]    = "000003E8";
-  char hex_1000000[] = "000F4240";
+  char hex_1000 _Nt_checked[] = "000003E8";
+  char hex_1000000 _Nt_checked[] = "000F4240";
 
   /* Load 0x0308 into A and B from string */
   bignum_from_string(&sa, hex_1000, 8);
