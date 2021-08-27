@@ -32,7 +32,9 @@
 #include <stdio.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
 
+#define printf(...) _Unchecked { printf(__VA_ARGS__); }
 
 void factorial(_Ptr<struct bn> n, _Ptr<struct bn> res)
 {

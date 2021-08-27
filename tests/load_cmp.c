@@ -5,13 +5,14 @@
 
 */
 
-
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
 
+#define printf(...) _Unchecked { printf(__VA_ARGS__); }
 
 int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {

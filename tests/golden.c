@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
+
+#define printf(...) _Unchecked { printf(__VA_ARGS__); }
 
 /* For table-defined list of tests */
 struct test

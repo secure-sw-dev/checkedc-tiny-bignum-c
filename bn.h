@@ -23,6 +23,8 @@ There may well be room for performance-optimizations and improvements.
 #include <stdint.h>
 #include <assert.h>
 
+#pragma CHECKED_SCOPE push
+#pragma CHECKED_SCOPE on
 
 /* This macro defines the word size in bytes of the array that constitues the big-number data structure. */
 #ifndef WORD_SIZE
@@ -117,6 +119,7 @@ void bignum_pow(_Ptr<struct bn> a, _Ptr<struct bn> b, _Ptr<struct bn> c); /* Cal
 void bignum_isqrt(_Ptr<struct bn> a, _Ptr<struct bn> b);             /* Integer square root -- e.g. isqrt(5) => 2*/
 void bignum_assign(_Ptr<struct bn> dst, _Ptr<struct bn> src);        /* Copy src into dst -- dst := src */
 
+#pragma CHECKED_SCOPE pop
 
 #endif /* #ifndef __BIGNUM_H__ */
 

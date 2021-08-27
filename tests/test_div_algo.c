@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
+
+#define printf(...) _Unchecked { printf(__VA_ARGS__); }
+
 /*
 
 Division algorithms using bitwise operations

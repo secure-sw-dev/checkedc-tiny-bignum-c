@@ -4,7 +4,11 @@
 #include <string.h>
 #include "bn.h"
 
-void bignum_from_string_using_strlen(_Ptr<struct bn> n, _Nt_array_ptr<char> str) {
+#pragma CHECKED_SCOPE on
+
+#define printf(...) _Unchecked { printf(__VA_ARGS__); }
+
+_Unchecked void bignum_from_string_using_strlen(_Ptr<struct bn> n, _Nt_array_ptr<char> str) {
   int len = strlen(str);
   _Nt_array_ptr<char> str2 : count(len) =
     _Assume_bounds_cast<_Nt_array_ptr<char>>(str, count(len));
