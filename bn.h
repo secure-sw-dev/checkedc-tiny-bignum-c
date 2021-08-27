@@ -91,7 +91,7 @@ void bignum_init(_Ptr<struct bn> n);
 void bignum_from_int(_Ptr<struct bn> n, DTYPE_TMP i);
 int  bignum_to_int(_Ptr<struct bn> n);
 void bignum_from_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str : count(nbytes), int nbytes);
-void bignum_to_string(_Ptr<struct bn> n, char *str : itype(_Array_ptr<char>) count(maxsize), int maxsize);
+void bignum_to_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str : count(maxsize), int maxsize);
 
 /* Basic arithmetic operations: */
 void bignum_add(_Ptr<struct bn> a, _Ptr<struct bn> b, _Ptr<struct bn> c); /* c = a + b */
