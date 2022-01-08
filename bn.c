@@ -114,7 +114,9 @@ void bignum_from_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str : count(nbyte
   while (i >= 0)
   {
     tmp = 0;
-    sscanf(&str[i], SSCANF_FORMAT_STR, &tmp);
+    _Nt_array_ptr<char> read_pos =
+      _Dynamic_bounds_cast<_Nt_array_ptr<char>>(str + i, count(0));
+    _Unchecked { sscanf(read_pos, SSCANF_FORMAT_STR, &tmp); }
     n->array[j] = tmp;
     i -= (2 * WORD_SIZE); /* step WORD_SIZE hex-byte(s) back in the string. */
     j += 1;               /* step one element forward in the array. */
