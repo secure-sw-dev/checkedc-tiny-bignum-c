@@ -124,7 +124,7 @@ void bignum_from_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str : count(nbyte
 }
 
 
-void bignum_to_string(_Ptr<struct bn> n, char *str : itype(_Array_ptr<char>) count(8191), int nbytes)
+void bignum_to_string(_Ptr<struct bn> n, char *str : itype(_Array_ptr<char>) count(nbytes), int nbytes)
 {
   require(n, "n is null");
   require(str, "str is null");

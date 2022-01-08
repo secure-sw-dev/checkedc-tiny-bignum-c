@@ -66,11 +66,11 @@ int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
   struct bn num = {};
   struct bn result = {};
-  char buf _Nt_checked[8192];
+  char buf _Nt_checked[8193];
 
   bignum_from_int(&num, 100);
   factorial(&num, &result);
-  bignum_to_string(&result, buf, sizeof(buf));
+  bignum_to_string(&result, buf, sizeof(buf)-1);
   printf("factorial(100) using bignum = %s\n", buf);
 
   return 0;
