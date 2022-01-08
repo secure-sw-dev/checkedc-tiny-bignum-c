@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
+
 /*
 
 Division algorithms using bitwise operations

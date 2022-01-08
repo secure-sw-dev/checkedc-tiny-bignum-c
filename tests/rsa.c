@@ -40,6 +40,8 @@
 #include <string.h> /* for memcpy */
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
+
 /* O(log n) */
 void pow_mod_faster(_Ptr<struct bn> a, _Ptr<struct bn> b, _Ptr<struct bn> n, _Ptr<struct bn> res)
 {

@@ -23,7 +23,7 @@ There may well be room for performance-optimizations and improvements.
 #include <assert.h>
 #include "bn.h"
 
-
+#pragma CHECKED_SCOPE on
 
 /* Functions for shifting number in-place. */
 static void _lshift_one_bit(_Ptr<struct bn> a);

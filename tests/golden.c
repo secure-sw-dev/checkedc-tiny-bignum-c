@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
 
 /* For table-defined list of tests */
 struct test

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "bn.h"
 
+#pragma CHECKED_SCOPE on
 
 int npassed = 0;
 int ntests = 0;

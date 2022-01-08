@@ -11,7 +11,7 @@
 #include <assert.h>
 #include "bn.h"
 
-
+#pragma CHECKED_SCOPE on
 
 int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
