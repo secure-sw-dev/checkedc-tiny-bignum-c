@@ -124,7 +124,7 @@ void bignum_from_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str : count(nbyte
 }
 
 
-void bignum_to_string(_Ptr<struct bn> n, char *str : itype(_Array_ptr<char>) count(nbytes), int nbytes)
+void bignum_to_string(_Ptr<struct bn> n, _Nt_array_ptr<char> str : count(nbytes), int nbytes)
 {
   require(n, "n is null");
   require(str, "str is null");
@@ -135,9 +135,9 @@ void bignum_to_string(_Ptr<struct bn> n, char *str : itype(_Array_ptr<char>) cou
   int i = 0;                 /* index into string representation. */
 
   /* reading last array-element "MSB" first -> big endian */
-  while ((j >= 0) && (nbytes > (i + 1)))
+  while ((j >= 0) && (nbytes >= i + 2 * WORD_SIZE))
   {
-    sprintf(&str[i], SPRINTF_FORMAT_STR, n->array[j]);
+    snprintf(&str[i], nbytes - i + 1, SPRINTF_FORMAT_STR, n->array[j]); 
     i += (2 * WORD_SIZE); /* step WORD_SIZE hex-byte(s) forward in the string. */
     j -= 1;               /* step one element back in the array. */
   }
