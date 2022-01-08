@@ -34,9 +34,9 @@
 
 
 
-void factorial(struct bn* n, struct bn* res)
+void factorial(_Ptr<struct bn> n, _Ptr<struct bn> res)
 {
-  struct bn tmp;
+  struct bn tmp = {};
 
   /* Copy n -> tmp */
   bignum_assign(&tmp, n);
@@ -62,11 +62,11 @@ void factorial(struct bn* n, struct bn* res)
 }
 
 
-int main()
+int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
-  struct bn num;
-  struct bn result;
-  char buf[8192];
+  struct bn num = {};
+  struct bn result = {};
+  char buf _Nt_checked[8192];
 
   bignum_from_int(&num, 100);
   factorial(&num, &result);

@@ -14,7 +14,9 @@ static void test_evil(void)
     https://github.com/kokke/tiny-bignum-c/issues/2
   */
   {
-    struct bn a, b, c;
+    struct bn a = {};
+struct bn b = {};
+struct bn c = {};
     bignum_from_int(&a, 1); 
     bignum_init(&b); bignum_dec(&b); // b now holds biggest bignum
     bignum_div(&b, &a, &c);
@@ -32,9 +34,9 @@ static void test_over_and_underflow(void)
     https://github.com/kokke/tiny-bignum-c/issues/3
   */
   {
-    struct bn a;
-    struct bn b;
-    struct bn c;
+    struct bn a = {};
+    struct bn b = {};
+    struct bn c = {};
 
     bignum_from_int(&a, 0);
     bignum_from_int(&b, 1);
@@ -56,7 +58,9 @@ static void test_rshift_largish_number(void)
     https://github.com/kokke/tiny-bignum-c/pull/7
   */
   {
-    struct bn n1, n2, n3;
+    struct bn n1 = {};
+struct bn n2 = {};
+struct bn n3 = {};
 
     bignum_from_string(&n1, "11112222333344445555666677778888", 32);
     bignum_from_string(&n3, "1111222233334444", 16);
@@ -71,7 +75,7 @@ static void test_rshift_largish_number(void)
 
 
 
-int main()
+int main(int argc, _Array_ptr<_Nt_array_ptr<char>> argv : count(argc))
 {
   printf("\nRunning hand-picked test cases:\n");
 
